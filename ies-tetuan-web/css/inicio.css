@@ -1,0 +1,187 @@
+
+
+/* ==========================================================================
+   1. PORTADA 
+   La foto ocupa todo el ancho y lleva encima una capa verde oscura
+   (degradado) para que el texto blanco se lea sin problemas.
+   ========================================================================== */
+.hero {
+  position: relative;
+  isolation: isolate; /* mantiene la foto y la capa dentro de la portada */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: clamp(1.5rem, 6vw, 88px);
+  min-height: clamp(260px, 41.7vw, 600px);          /* 600px en escritorio */
+  padding: clamp(2rem, 6.5vw, 94px) clamp(1rem, 5.5vw, 80px) 2rem;
+  overflow: hidden;
+  color: var(--blanco);
+}
+
+/* La foto de fondo se recorta para llenar la portada sin deformarse */
+.hero__imagen {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Capa de oscurecimiento: más intensa a la izquierda, donde está el texto */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(25, 77, 54, 0.92) 0%,
+    rgba(25, 77, 54, 0.62) 45%,
+    rgba(25, 77, 54, 0.3) 100%
+  );
+}
+
+.hero__saludo {
+  margin: 0;
+  color: var(--verde-hero);
+  font-size: clamp(1.1rem, 2.2vw, 2rem);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.hero__titulo {
+  max-width: 12.5em;
+  margin: 0;
+  color: var(--blanco);
+  font-size: clamp(1.5rem, 4.6vw, 4rem);
+  text-transform: uppercase;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ==========================================================================
+   2. MI EXPERIENCIA Y TRAYECTORIA
+   Imagen a la izquierda y texto a la derecha, con Flexbox.
+   ========================================================================== */
+.experiencia {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: clamp(1.5rem, 6.8vw, 98px);
+  padding-block: 1rem 5rem;
+  padding-inline-start: calc(var(--espacio) + 1rem);
+}
+
+.experiencia__figura {
+  flex: 0 0 clamp(240px, 31.25vw, 450px);   /* 450px en escritorio */
+  margin: 0;
+}
+
+/* En el prototipo la captura de código tiene las esquinas rectas */
+.experiencia__figura img {
+  aspect-ratio: 9 / 8;
+  border-radius: 0;
+}
+
+.experiencia__texto {
+  flex: 0 1 37.5rem;
+}
+
+.experiencia__texto h2 {
+  margin: 0 0 2rem;
+}
+
+.experiencia__texto p {
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   3. DISEÑO DE MI FAVICONO (bloque centrado)
+   ========================================================================== */
+.favicono {
+  max-width: 37.5rem;
+  margin-inline: auto;
+  padding: 0 var(--espacio) 4rem;
+  text-align: center;
+}
+
+.favicono p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.favicono__imagen {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 0.6rem;
+  /* Animación suave: el favicono "flota" arriba y abajo */
+  animation: flotar 4s ease-in-out infinite;
+}
+
+.favicono h2 {
+  margin: 0 0 0.25rem;
+}
+
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+
+/* ==========================================================================
+   4. RESPONSIVE (hasta 768px)
+   La imagen pasa encima del texto y ocupa todo el ancho.
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 290px;
+    padding: 2rem 1rem;
+    gap: 6rem;
+  }
+
+  .hero__saludo {
+    font-size: 1.25rem;
+  }
+
+  .hero__titulo {
+    font-size: 1.5rem;
+  }
+
+  /* La captura de código ocupa todo el ancho; el texto lleva margen lateral */
+  .experiencia {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.8rem;
+    padding: 2rem 0;
+  }
+
+  .experiencia__figura {
+    flex: 0 0 auto;
+  }
+
+  .experiencia__figura img {
+    aspect-ratio: 1 / 1.02;
+  }
+
+  .experiencia__texto {
+    flex: 0 0 auto;
+    padding-inline: 1.25rem;
+  }
+
+  .experiencia__texto h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .favicono {
+    padding-inline: 0.4rem;
+    padding-bottom: 1rem;
+  }
+}

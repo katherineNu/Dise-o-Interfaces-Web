@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     centro.html — PÁGINA 2: EL CENTRO (maquetada con Flexbox)
+     Proyecto: Sitio web del IES Tetuán de las Victorias
+     Autora: Katherine Núñez Tapia
+     ========================================================================== -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Centro | IES Tetuán de las Victorias</title>
+  <meta name="description" content="Información sobre el IES Tetuán de las Victorias: instalaciones, servicios, ubicación y entorno.">
+
+  <!-- Favicono personal "KN" (el mismo en las tres páginas) -->
+  <link rel="icon" href="img/favicon.ico" sizes="any">
+  <link rel="icon" href="img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="img/favicono.png">
+
+  <!-- Hojas de estilo: primero las comunes y después las de esta página -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/centro.css">
+
+</head>
+
+<body id="arriba">
+
+  <!-- Enlace para saltar el menú al navegar con teclado -->
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===================== CABECERA Y MENÚ ===================== -->
+  <header class="cabecera">
+    <div class="cabecera__contenedor">
+
+      <!-- Logotipo + nombre del centro (enlaza con Inicio) -->
+      <a class="marca" href="index.html">
+        <img class="marca__logo" src="img/favicon.png" alt="" width="40" height="40">
+        <span>IES Tetuán de las Victorias</span>
+      </a>
+
+      <nav class="navegacion" aria-label="Menú principal">
+        <!-- Menú hamburguesa (solo móvil): casilla oculta + etiqueta, sin JavaScript -->
+        <input class="menu-check" type="checkbox" id="menu-check" aria-label="Abrir o cerrar el menú">
+        <label class="menu-boton" for="menu-check" aria-hidden="true">
+          <span class="menu-boton__barra"></span>
+          <span class="menu-boton__barra"></span>
+          <span class="menu-boton__barra"></span>
+        </label>
+
+        <ul class="menu" id="menu-principal">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="centro.html" aria-current="page">El Centro</a></li>
+          <li><a href="estudios.html">Mis Estudios</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="contenido" class="contenedor">
+
+    <!-- ===================== PRESENTACIÓN (Flexbox: imagen + texto) ===================== -->
+    <section class="presentacion" aria-labelledby="titulo-centro">
+      <figure class="presentacion__figura">
+        <img class="imagen-recortada" src="img/centro-entrada.jpg"
+             alt="Zona de entrada del instituto con una pantalla, plantas y un panel informativo del centro"
+             width="950" height="697">
+      </figure>
+
+      <div class="presentacion__texto">
+        <h1 id="titulo-centro">Conoce el IES Tetuán de las Victorias</h1>
+        <p>
+          El IES Tetuán de las Victorias es un centro educativo público, está
+          ubicado en el barrio de La Ventilla en la Comunidad de Madrid. Este
+          centro está comprometido con la excelencia académica y la formación
+          práctica. Destaca por ofrecer una amplia oferta educativa en
+          Formación Profesional. El objetivo principal es formar alumnos para
+          el mercado laboral.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== TARJETAS (Flexbox con salto de línea) ===================== -->
+    <section class="tarjetas" aria-label="Servicios e instalaciones del centro">
+
+      <article class="tarjeta">
+        <img class="tarjeta__imagen imagen-recortada" src="img/centro-aula.jpg"
+             alt="Aula de informática con mesas blancas y ordenadores"
+             width="800" height="559" loading="lazy">
+        <div class="tarjeta__cuerpo">
+          <h2>Aulas y Talleres</h2>
+          <p>
+            El centro cuenta con aulas técnicas equipadas con última tecnología,
+            adaptadas a cada rama profesional como:
+          </p>
+          <ul>
+            <li>Informática y Comunicaciones</li>
+            <li>Administración y Gestión</li>
+            <li>Hostelería y Turismo</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tarjeta">
+        <img class="tarjeta__imagen imagen-recortada" src="img/centro-apoyo.jpg"
+             alt="Cristalera del centro con palabras motivadoras como emprende, valora e idea"
+             width="800" height="565" loading="lazy">
+        <div class="tarjeta__cuerpo">
+          <h2>Apoyo al Estudiante</h2>
+          <p>Los servicios que ofrece el centro son:</p>
+          <ul>
+            <li>Orientación laboral</li>
+            <li>Biblioteca</li>
+            <li>Programa de Erasmus+</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tarjeta">
+        <img class="tarjeta__imagen imagen-recortada" src="img/centro-patio.jpg"
+             alt="Camino del patio exterior del centro rodeado de plantas y árboles"
+             width="800" height="552" loading="lazy">
+        <div class="tarjeta__cuerpo">
+          <h2>Instalaciones</h2>
+          <p>
+            Amplios espacios comunes como la cafetería o el patio exterior,
+            diseñado para el descanso, la desconexión y la convivencia entre
+            los estudiantes de diferentes ciclos formativos.
+          </p>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ===================== UBICACIÓN (Flexbox: texto + mapa) ===================== -->
+    <section class="ubicacion" aria-labelledby="titulo-ubicacion">
+      <div class="ubicacion__texto">
+        <h2 id="titulo-ubicacion">Ubicación y Entorno</h2>
+        <p>
+          El centro está situado en el distrito de Tetuán (barrio de La
+          Ventilla), una zona tranquila y muy bien comunicada en el norte de
+          Madrid. El entorno cuenta con parques, zonas comerciales y
+          facilidades para los estudiantes.
+        </p>
+        <h3><span aria-hidden="true">🚇</span> Transporte público:</h3>
+        <ul>
+          <li>Metro: Valdeacederas (Línea 1) y Plaza de Castilla (Líneas 1, 9 y 10).</li>
+          <li>Autobuses EMT: Líneas 42, 49, 66, 124 y 177</li>
+        </ul>
+      </div>
+
+      <!-- El mapa es un enlace a Google Maps -->
+      <figure class="ubicacion__mapa">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=IES+Tetu%C3%A1n+de+las+Victorias+Madrid"
+           target="_blank" rel="noopener"
+           aria-label="Ver el IES Tetuán de las Victorias en Google Maps (se abre en una pestaña nueva)">
+          <img class="imagen-recortada" src="img/mapa-centro.jpg"
+               alt="Mapa con la ubicación del IES Tetuán de las Victorias en el norte de Madrid"
+               width="567" height="485" loading="lazy">
+        </a>
+      </figure>
+    </section>
+
+  </main>
+
+
+  <!-- ===================== PIE DE PÁGINA ===================== -->
+  <footer class="pie">
+    <div class="pie__contenedor">
+
+      <!-- Columna 1: datos de contacto del centro -->
+      <div class="pie__col pie__contacto">
+        <h2 class="pie__titulo">IES Tetuán de las Victorias</h2>
+        <address class="pie__direccion">
+          C. de la Vía Límite, 14<br>
+          28029 Madrid<br>
+          Tel: <a href="tel:+34913146706">913 14 67 06</a><br>
+          Email:<br>
+          <a href="mailto:ies.tetuan.madrid@educa.madrid.org">ies.tetuan.madrid@educa.madrid.org</a>
+        </address>
+      </div>
+
+      <!-- Columna 2: enlaces a las tres páginas -->
+      <nav class="pie__col pie__enlaces" aria-label="Enlaces de interés">
+        <h2 class="pie__titulo">Enlaces de interés</h2>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="centro.html">El Centro</a></li>
+          <li><a href="estudios.html">Mis Estudios</a></li>
+        </ul>
+      </nav>
+
+      <!-- Columna 3: sobre el proyecto (el favicono lleva a Inicio) -->
+      <div class="pie__col pie__proyecto">
+        <h2 class="pie__titulo">Sobre este proyecto:</h2>
+        <p class="pie__descripcion">Proyecto de Desarrollo de Aplicaciones Web (DAW)</p>
+        <p class="pie__autor">
+          <span class="solo-escritorio">Diseñado y desarrollado por Katherine Núñez</span>
+          <span class="solo-movil">Proyecto DAW - Katherine Núñez</span>
+          <a href="index.html" aria-label="Ir a la página de inicio">
+            <img class="pie__logo" src="img/favicon.png" alt="" width="36" height="36" loading="lazy">
+          </a>
+        </p>
+      </div>
+
+    </div>
+
+    <p class="pie__copy">
+      <span class="solo-escritorio">© 2026 IES Tetuán de las Victorias - Proyecto académico. Todos los derechos reservados.</span>
+      <span class="solo-movil">© 2026</span>
+      <a class="pie__arriba solo-escritorio" href="#arriba">Volver arriba ↑</a>
+    </p>
+  </footer>
+
+</body>
+</html>

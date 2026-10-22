@@ -1,0 +1,216 @@
+/* ==========================================================================
+   centro.css — Estilos exclusivos de la página EL CENTRO (centro.html)
+   Toda la maquetación de esta página se hace con FLEXBOX.
+   ========================================================================== */
+
+main.contenedor {
+  padding-top: clamp(1.5rem, 7vw, 100px);
+}
+
+main.contenedor > section {
+  margin-bottom: clamp(2rem, 5vw, 70px);
+}
+
+
+/* ==========================================================================
+   1. PRESENTACIÓN DEL CENTRO (Flexbox en fila)
+   ========================================================================== */
+.presentacion {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(1.5rem, 7vw, 100px);
+}
+
+/* La imagen mantiene un ancho fijo; el texto ocupa el espacio restante */
+.presentacion__figura {
+  flex: 0 0 clamp(260px, 34.9vw, 502px);   /* 502px en escritorio */
+  margin: 0;
+}
+
+.presentacion__figura img {
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radio-grande);
+}
+
+.presentacion__texto {
+  flex: 0 1 30.5rem;
+}
+
+.presentacion__texto h1 {
+  margin: 0 0 2.5rem;
+}
+
+.presentacion__texto p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+
+/* ==========================================================================
+   2. TARJETAS: Aulas y Talleres, Apoyo al Estudiante, Instalaciones
+   flex-wrap permite que las tarjetas bajen de línea cuando no caben.
+   ========================================================================== */
+.tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 4vw, 3.6rem);
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+/* flex: 1 1 220px = crece, se encoge y parte de 220px de ancho mínimo */
+.tarjetas .tarjeta {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 220px;
+}
+
+.tarjeta__imagen {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radio) var(--radio) 0 0;
+}
+
+.tarjeta__cuerpo {
+  padding: 0.9rem 1rem 1.2rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.tarjeta__cuerpo h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.tarjeta__cuerpo p {
+  margin: 0 0 0.5rem;
+}
+
+.tarjeta__cuerpo ul {
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   3. UBICACIÓN Y ENTORNO (Flexbox en fila: texto + mapa)
+   ========================================================================== */
+.ubicacion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+.ubicacion__texto {
+  flex: 1 1 0;
+  max-width: 44rem;
+  /* En el prototipo este bloque usa un texto más grande (24px) */
+  font-size: clamp(1.125rem, 0.9rem + 0.8vw, 1.5rem);
+  line-height: 1.5;
+}
+
+.ubicacion__texto h2 {
+  margin: 0 0 0.25rem;
+}
+
+.ubicacion__texto p {
+  margin: 0;
+}
+
+.ubicacion__texto h3 {
+  margin: 0;
+  color: var(--texto);
+  font-size: 1em;
+}
+
+
+.ubicacion__texto ul {
+  margin: 0;
+  padding: 0;
+  list-style: disc inside;
+}
+
+/* El mapa es un enlace a Google Maps */
+.ubicacion__mapa {
+  flex: 0 1 clamp(260px, 34.7vw, 500px);   /* 500px en escritorio */
+  margin: 0;
+}
+
+.ubicacion__mapa a {
+  display: block;
+  border-radius: 20px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ubicacion__mapa a:hover {
+  transform: scale(1.02);
+  box-shadow: var(--sombra-elevada);
+}
+
+.ubicacion__mapa img {
+  aspect-ratio: 10 / 7;
+  border-radius: 20px;
+}
+
+
+/* ==========================================================================
+   4. RESPONSIVE
+   ========================================================================== */
+
+/* Tablet y móvil: las filas pasan a columna */
+@media (max-width: 768px) {
+  .presentacion,
+  .ubicacion {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  main.contenedor {
+    padding: 0 0.6rem;
+  }
+
+  .presentacion__figura,
+  .ubicacion__mapa {
+    flex: 0 0 auto;
+  }
+
+  .presentacion {
+    gap: 1rem;
+  }
+
+  .presentacion__figura img {
+    aspect-ratio: 19 / 20;
+    border-radius: 24px;
+  }
+
+  .presentacion__texto {
+    flex: 0 0 auto;
+    text-align: center;
+  }
+
+  .presentacion__texto h1 {
+    margin-bottom: 1.5rem;
+  }
+
+  .tarjetas {
+    gap: 2.5rem;
+  }
+
+  /* En móvil el bloque de ubicación también usa texto de 24px */
+  .ubicacion__texto {
+    font-size: 1.5rem;
+  }
+
+  /* En la ubicación, el mapa va debajo del texto (igual que en Figma) */
+  .ubicacion__texto {
+    max-width: none;
+  }
+}
+
+/* Móvil: una tarjeta por fila */
+@media (max-width: 600px) {
+  .tarjetas .tarjeta {
+    flex-basis: 100%;
+  }
+}

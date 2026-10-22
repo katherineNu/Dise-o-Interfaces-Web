@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     index.html — PÁGINA 1: INICIO
+     Proyecto: Sitio web del IES Tetuán de las Victorias
+     Autora: Katherine Núñez Tapia
+     Contenido: portada, mi experiencia en el centro y diseño de mi favicono.
+     ========================================================================== -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio | IES Tetuán de las Victorias</title>
+  <meta name="description" content="Página de inicio del proyecto web sobre el IES Tetuán de las Victorias: mi experiencia en el centro y el diseño de mi favicono.">
+
+  <!-- Favicono personal "KN" (el mismo en las tres páginas) -->
+  <link rel="icon" href="img/favicon.ico" sizes="any">
+  <link rel="icon" href="img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="img/favicono.png">
+
+  <!-- Hojas de estilo: primero las comunes y después las de esta página -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/inicio.css">
+
+</head>
+
+<body id="arriba">
+
+  <!-- Enlace para saltar el menú al navegar con teclado -->
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===================== CABECERA Y MENÚ ===================== -->
+  <header class="cabecera">
+    <div class="cabecera__contenedor">
+
+      <!-- Logotipo + nombre del centro (enlaza con Inicio) -->
+      <a class="marca" href="index.html">
+        <img class="marca__logo" src="img/favicon.png" alt="" width="40" height="40">
+        <span>IES Tetuán de las Victorias</span>
+      </a>
+
+      <nav class="navegacion" aria-label="Menú principal">
+        <!-- Menú hamburguesa (solo móvil): casilla oculta + etiqueta, sin JavaScript -->
+        <input class="menu-check" type="checkbox" id="menu-check" aria-label="Abrir o cerrar el menú">
+        <label class="menu-boton" for="menu-check" aria-hidden="true">
+          <span class="menu-boton__barra"></span>
+          <span class="menu-boton__barra"></span>
+          <span class="menu-boton__barra"></span>
+        </label>
+
+        <ul class="menu" id="menu-principal">
+          <li><a href="index.html" aria-current="page">Inicio</a></li>
+          <li><a href="centro.html">El Centro</a></li>
+          <li><a href="estudios.html">Mis Estudios</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ===================== PORTADA ===================== -->
+    <section class="hero">
+      <!-- La foto llena toda la portada (object-fit: cover) -->
+      <img class="hero__imagen" src="img/hero-instituto.jpg"
+           alt="Entrada del IES Tetuán de las Victorias con la fachada cubierta de hiedra roja"
+           width="907" height="599">
+      <p class="hero__saludo">Bienvenidos a mi Instituto.</p>
+      <h1 class="hero__titulo">IES Tetuán de las Victorias</h1>
+    </section>
+
+    <!-- ===================== MI EXPERIENCIA ===================== -->
+    <section class="experiencia contenedor" aria-labelledby="titulo-experiencia">
+      <figure class="experiencia__figura">
+        <img class="imagen-recortada" src="img/codigo-php.jpg"
+             alt="Captura de código PHP y HTML de un formulario de acceso"
+             width="900" height="800" loading="lazy">
+      </figure>
+
+      <div class="experiencia__texto">
+        <h2 id="titulo-experiencia">Mi experiencia y trayectoria</h2>
+        <p>
+          Hola, soy Katherine Núñez, actualmente estoy en segundo año de
+          Desarrollo de Aplicaciones Web (DAW) en el IES Tetuán de las
+          Victorias. Durante el primer año he adquirido conocimientos en bases
+          de datos y programación en lenguajes como Java y PHP. Gracias al
+          apoyo académico y a los retos que nos han ido planteando los
+          profesores, siento que estoy construyendo poco a poco mi futuro en
+          el sector tecnológico.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== DISEÑO DE MI FAVICONO ===================== -->
+    <section class="favicono" aria-labelledby="titulo-favicono">
+      <img class="favicono__imagen" src="img/favicono.png"
+           alt="Favicono formado por las letras N y K con degradado de neón naranja, rosa y violeta"
+           width="256" height="256" loading="lazy">
+      <h2 id="titulo-favicono">Diseño de mi Favicono</h2>
+      <p>
+        El favicono que he diseñado está compuesto por mis iniciales (Núñez,
+        Katherine). He optado por hacerlo de esta manera porque siento que me
+        identifica; los colores que he usado siento que le dan un toque muy
+        moderno.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ===================== PIE DE PÁGINA ===================== -->
+  <footer class="pie">
+    <div class="pie__contenedor">
+
+      <!-- Columna 1: datos de contacto del centro -->
+      <div class="pie__col pie__contacto">
+        <h2 class="pie__titulo">IES Tetuán de las Victorias</h2>
+        <address class="pie__direccion">
+          C. de la Vía Límite, 14<br>
+          28029 Madrid<br>
+          Tel: <a href="tel:+34913146706">913 14 67 06</a><br>
+          Email:<br>
+          <a href="mailto:ies.tetuan.madrid@educa.madrid.org">ies.tetuan.madrid@educa.madrid.org</a>
+        </address>
+      </div>
+
+      <!-- Columna 2: enlaces a las tres páginas -->
+      <nav class="pie__col pie__enlaces" aria-label="Enlaces de interés">
+        <h2 class="pie__titulo">Enlaces de interés</h2>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="centro.html">El Centro</a></li>
+          <li><a href="estudios.html">Mis Estudios</a></li>
+        </ul>
+      </nav>
+
+      <!-- Columna 3: sobre el proyecto (el favicono lleva a Inicio) -->
+      <div class="pie__col pie__proyecto">
+        <h2 class="pie__titulo">Sobre este proyecto:</h2>
+        <p class="pie__descripcion">Proyecto de Desarrollo de Aplicaciones Web (DAW)</p>
+        <p class="pie__autor">
+          <span class="solo-escritorio">Diseñado y desarrollado por Katherine Núñez</span>
+          <span class="solo-movil">Proyecto DAW - Katherine Núñez</span>
+          <a href="index.html" aria-label="Ir a la página de inicio">
+            <img class="pie__logo" src="img/favicon.png" alt="" width="36" height="36" loading="lazy">
+          </a>
+        </p>
+      </div>
+
+    </div>
+
+    <p class="pie__copy">
+      <span class="solo-escritorio">© 2026 IES Tetuán de las Victorias - Proyecto académico. Todos los derechos reservados.</span>
+      <span class="solo-movil">© 2026</span>
+      <a class="pie__arriba solo-escritorio" href="#arriba">Volver arriba ↑</a>
+    </p>
+  </footer>
+
+</body>
+</html>

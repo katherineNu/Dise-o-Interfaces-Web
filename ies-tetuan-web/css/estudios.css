@@ -1,0 +1,217 @@
+/* ==========================================================================
+   estudios.css — Estilos exclusivos de la página MIS ESTUDIOS (estudios.html)
+   Toda la maquetación de esta página se hace con CSS GRID.
+   ========================================================================== */
+
+main.contenedor {
+  padding-top: clamp(1.5rem, 3.75vw, 54px);
+}
+
+.estudios__titulo {
+  max-width: 70rem;            /* el título se parte en dos líneas, como en Figma */
+  margin: 0 auto clamp(1.5rem, 5vw, 72px);
+  text-align: center;
+  font-size: clamp(1.5rem, 0.6rem + 2.8vw, 2.5rem);   /* 40px en escritorio */
+}
+
+
+/* ==========================================================================
+   1. REJILLA PRINCIPAL
+  
+   ========================================================================== */
+.estudios {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "modulos   tecnologias"
+    "proyectos vision";
+  gap: clamp(1.5rem, 5vw, 4.4rem) clamp(1.5rem, 7vw, 100px);
+  padding-inline: clamp(0px, 3vw, 44px);
+  align-items: start;
+}
+
+/* Cada sección se coloca en su zona con grid-area */
+.modulos {
+  grid-area: modulos;
+}
+
+.tecnologias {
+  grid-area: tecnologias;
+}
+
+.proyectos {
+  grid-area: proyectos;
+}
+
+.vision {
+  grid-area: vision;
+}
+
+.estudios h2 {
+  margin-top: 0;
+  font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+}
+
+
+/* ==========================================================================
+   MIS MÓDULOS FORMATIVOS
+   ========================================================================== */
+.estudios h2 {
+  margin-bottom: 2rem;
+}
+
+.modulos h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--texto);
+}
+
+/* Viñetas dentro del texto, como en el prototipo */
+.modulos ul {
+  margin: 0;
+  padding: 0;
+  list-style: disc inside;
+  line-height: 1.5;
+}
+
+
+/* ==========================================================================
+   2. TECNOLOGÍAS Y HERRAMIENTAS
+   
+   ========================================================================== */
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 2.5vw, 2.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.etiquetas li {
+  padding: 1rem 0.75rem;
+  border-radius: 999px;
+  background-color: var(--verde-claro);
+  color: #0f2a1c;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.etiquetas li:hover {
+  transform: scale(1.08);
+}
+
+
+/* ==========================================================================
+   3. PROYECTOS DESTACADOS
+   Cada tarjeta es una rejilla de dos columnas: miniatura | texto.
+   ========================================================================== */
+.proyecto {
+  display: grid;
+  grid-template-columns: minmax(80px, 8.4rem) 1fr;
+  gap: 1.8rem;
+  align-items: center;
+  max-width: 25rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+}
+
+.proyecto__imagen {
+  aspect-ratio: 3 / 2;
+  border-radius: 8px;
+}
+
+.proyecto h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.125rem;
+}
+
+.proyecto p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+
+/* ==========================================================================
+   MI VISIÓN PROFESIONAL (caja verde)
+   ========================================================================== */
+.vision {
+  max-width: 27.25rem;
+  padding: 1rem 1.5rem 1.5rem;
+  border-radius: 20px;
+  background-color: var(--verde-claro);
+  color: #0f2a1c;
+}
+
+.vision h2 {
+  margin: 0 0 1rem;
+  color: var(--texto);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.vision p {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.vision p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ==========================================================================
+   4. RESPONSIVE (hasta 768px)
+   Una sola columna; las zonas se apilan en el mismo orden que en Figma.
+   ========================================================================== */
+@media (max-width: 768px) {
+  .estudios {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "modulos"
+      "tecnologias"
+      "proyectos"
+      "vision";
+  }
+
+  .estudios {
+    padding-inline: 0;
+    gap: 2rem;
+  }
+
+  .proyecto {
+    max-width: none;
+  }
+
+  .vision {
+    max-width: none;
+  }
+
+  /* En el prototipo móvil los módulos y las etiquetas llevan letra más pequeña */
+  .modulos ul {
+    font-size: 1rem;
+  }
+
+  .modulos h3 {
+    font-size: 1.125rem;
+  }
+
+  .etiquetas {
+    gap: 0.9rem 1.4rem;
+  }
+
+  .etiquetas li {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .estudios h2 {
+    margin-bottom: 1rem;
+  }
+}

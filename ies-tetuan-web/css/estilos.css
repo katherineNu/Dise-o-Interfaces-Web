@@ -1,0 +1,547 @@
+/* ==========================================================================
+   estilos.css — Estilos COMUNES a las tres páginas
+   Proyecto: Sitio web del IES Tetuán de las Victorias
+   Autora: Katherine Núñez Tapia
+
+
+/* ==========================================================================
+   1. FUENTES
+   Poppins en tres pesos: 400 (normal), 500 (medio) y 700 (negrita).
+   font-display: swap muestra el texto enseguida con una fuente de reserva
+   mientras se descarga Poppins.
+   ========================================================================== */
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ==========================================================================
+   2. VARIABLES
+ 
+   ========================================================================== */
+:root {
+  /* Paleta */
+  --verde-oscuro: #194d36;   /* cabecera, pie y títulos */
+  --verde-claro: #a5d5ab;    /* etiquetas y caja "Mi visión profesional" */
+  --verde-pastel: #ddf0e2;   /* opción activa del menú */
+  --verde-hero: #c5e1a5;     /* saludo sobre la foto de portada */
+  --texto: #1b1b1b;          /* texto principal (contraste alto sobre blanco) */
+  --blanco: #ffffff;
+  --foco: #f5c542;           /* anillo de foco para navegar con teclado */
+
+  /* Medidas */
+  --radio: 12px;             /* esquinas de tarjetas e imágenes */
+  --radio-grande: 36px;      /* imagen principal de "El Centro" */
+  --sombra: 0 2px 6px rgba(0, 0, 0, 0.2);
+  --sombra-elevada: 0 10px 20px rgba(0, 0, 0, 0.2);
+  --ancho-max: 1280px;       /* ancho útil del contenido en escritorio (1440px - márgenes de 80px) */
+  --espacio: clamp(1rem, 3vw, 2rem);
+}
+
+
+/* ==========================================================================
+   3. RESET Y ESTILOS BASE
+   ========================================================================== */
+
+/* box-sizing: border-box hace que el padding no aumente el ancho de las cajas */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* el enlace "Volver arriba" se desplaza suavemente */
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  /* 20px: tamaño del texto de cuerpo definido en Figma (escritorio y móvil) */
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--texto);
+  background-color: var(--blanco);
+  /* El pie de página queda siempre abajo aunque la página tenga poco contenido */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* Las imágenes nunca se salen de su contenedor y no se deforman */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.5;
+  color: var(--verde-oscuro);
+}
+
+a {
+  color: inherit;
+}
+
+
+/* ==========================================================================
+   4. ACCESIBILIDAD
+   ========================================================================== */
+
+/* Enlace oculto que aparece al pulsar Tab: permite saltar el menú */
+.saltar-contenido {
+  position: absolute;
+  top: -5rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radio);
+  background-color: var(--blanco);
+  color: var(--verde-oscuro);
+  font-weight: 700;
+  transition: top 0.2s ease;
+}
+
+.saltar-contenido:focus {
+  top: 1rem;
+}
+
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+}
+
+
+/* ==========================================================================
+   5. CABECERA Y MENÚ DE NAVEGACIÓN
+   ========================================================================== */
+.cabecera {
+  background-color: var(--verde-oscuro);
+  color: var(--blanco);
+}
+
+.cabecera__contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  min-height: 84px;                       /* altura de la cabecera en el prototipo */
+  /* 80px a la izquierda (como la portada) y un margen menor a la derecha */
+  padding: 0.5rem clamp(1rem, 2vw, 28px) 0.5rem clamp(1rem, 5.5vw, 80px);
+}
+
+/* Logotipo (favicono) + nombre del centro; es un enlace a Inicio */
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--blanco);
+  font-size: clamp(1.1rem, 5.8vw, 1.5rem); /* 24px en escritorio, algo menos en móvil */
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.marca__logo {
+  width: 32px;
+  height: 32px;
+}
+
+/* Lista de enlaces en horizontal (escritorio) */
+.menu {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu a {
+  display: block;
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  color: var(--blanco);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Página actual: "píldora" clara, como en el prototipo */
+.menu a[aria-current="page"] {
+  background-color: var(--verde-pastel);
+  color: var(--verde-oscuro);
+}
+
+
+.menu-check {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.menu-boton {
+  display: none;
+  padding: 0.4rem 0;
+  cursor: pointer;
+}
+
+/* Se ve el foco cuando se llega a la casilla con el teclado */
+.menu-check:focus-visible + .menu-boton {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+}
+
+.menu-boton__barra {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: var(--blanco);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-boton__barra + .menu-boton__barra {
+  margin-top: 6px;
+}
+
+/* Al abrir el menú, las tres barras se convierten en una X */
+.menu-check:checked + .menu-boton .menu-boton__barra:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-check:checked + .menu-boton .menu-boton__barra:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-check:checked + .menu-boton .menu-boton__barra:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* ==========================================================================
+   6. CONTENEDOR Y TIPOGRAFÍA
+   ========================================================================== */
+
+/* Centra el contenido y limita su ancho en pantallas grandes */
+.contenedor {
+  width: 100%;
+  max-width: calc(var(--ancho-max) + 2 * var(--espacio));
+  margin-inline: auto;
+  padding-inline: var(--espacio);
+}
+
+/* Escala tipográfica: H1 entre 24 y 32px en negrita (según Figma) */
+h1 {
+  font-size: 2rem;   /* 32px */
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;   /* 32px */
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+
+/* ==========================================================================
+   7. TARJETAS E IMÁGENES REUTILIZABLES
+   ========================================================================== */
+
+
+.imagen-recortada {
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radio);
+}
+
+/* Tarjeta blanca con sombra */
+.tarjeta {
+  overflow: hidden;
+  border-radius: var(--radio);
+  background-color: var(--blanco);
+  box-shadow: var(--sombra);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-elevada);
+}
+
+/* Listas con viñetas dentro del contenido */
+main ul {
+  padding-left: 1.2rem;
+}
+
+
+/* ==========================================================================
+   8. PIE DE PÁGINA
+   Se organiza con Flexbox: tres columnas en escritorio, bloque compacto
+   en móvil.
+   ========================================================================== */
+.pie {
+  margin-top: 3rem;
+  background-color: var(--verde-oscuro);
+  color: var(--blanco);
+  font-size: 1.25rem;   /* 20px */
+}
+
+.pie__contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  padding: 1.75rem clamp(1rem, 2vw, 28px) 1rem;
+}
+
+/* Las dos primeras columnas son más anchas que la tercera (proporción 3 : 3 : 2).
+   min-width evita que se estrechen demasiado: si no caben, bajan de línea. */
+.pie__col {
+  flex: 3.07 1 0;
+  min-width: 13rem;
+}
+
+.pie__proyecto {
+  flex: 2 1 0;
+}
+
+.pie__titulo {
+  margin: 0 0 0.5rem;
+  color: var(--blanco);
+  font-size: 1.5rem;   /* 24px */
+}
+
+.pie p,
+.pie address {
+  margin: 0 0 0.5rem;
+  font-style: normal; /* <address> viene en cursiva por defecto */
+}
+
+.pie a {
+  color: var(--blanco);
+  text-decoration: none;
+}
+
+.pie a:hover {
+  text-decoration: underline;
+}
+
+.pie__enlaces ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pie__enlaces li {
+  margin-bottom: 2rem; /* en Figma los enlaces del pie van bastante separados */
+}
+
+/* Favicono pequeño: enlaza con la página de inicio */
+.pie__autor a {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+.pie__logo {
+  width: 52px;
+  height: 52px;
+}
+
+/* Línea inferior: copyright + volver arriba */
+.pie__copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 3rem;
+  margin: 0;
+  padding: 0.75rem var(--espacio) 1.5rem;
+  font-size: 0.85rem;
+}
+
+.pie__arriba {
+  font-weight: 700;
+  color: var(--verde-hero);
+}
+
+/* Textos que solo se ven en escritorio o solo en móvil */
+.solo-movil {
+  display: none;
+}
+
+
+/* ==========================================================================
+   9. ANIMACIONES (sencillas, no recargan la página)
+   ========================================================================== */
+
+/* Las secciones aparecen suavemente al cargar la página */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main section {
+  animation: aparecer 0.7s ease-out both;
+}
+
+main section:nth-of-type(2) {
+  animation-delay: 0.15s;
+}
+
+main section:nth-of-type(3) {
+  animation-delay: 0.3s;
+}
+
+/* Respeta a las personas que desactivan las animaciones en su sistema */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ==========================================================================
+   10. RESPONSIVE — versión móvil (hasta 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  /* Cabecera: logotipo arriba y botón hamburguesa debajo, a la izquierda */
+  .cabecera__contenedor {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    min-height: 0;
+    padding: 0.65rem 0.8rem;
+  }
+
+  .menu-boton {
+    display: block;
+  }
+
+  .navegacion {
+    width: 100%;
+  }
+
+  /* El menú empieza cerrado y se abre al marcar la casilla (:checked) */
+  .menu {
+    display: none;
+    flex-direction: column;
+    padding-bottom: 0.5rem;
+  }
+
+  .menu-check:checked ~ .menu {
+    display: flex;
+  }
+
+  /* Pie compacto: solo título, autoría con favicono y copyright */
+  .pie__contacto .pie__direccion,
+  .pie__enlaces,
+  .pie__proyecto .pie__titulo,
+  .pie__descripcion {
+    display: none;
+  }
+
+  .pie {
+    margin-top: 2rem;
+    line-height: 1.45;
+  }
+
+  .pie__contenedor {
+    flex-direction: column;
+    gap: 0;
+    padding: 1.25rem 0.7rem 0;
+  }
+
+  .pie__col {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  /* En móvil el título del pie es texto normal, como en el prototipo */
+  .pie__titulo {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  /* Texto y favicono en una sola línea (flex ignora los espacios entre ellos) */
+  .pie__autor {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin: 0;
+  }
+
+  .pie__autor a {
+    margin-left: 0;
+  }
+
+  .pie__logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .pie__copy {
+    justify-content: flex-start;
+    padding: 0 0.8rem 1.25rem;
+    font-size: 1.25rem;
+  }
+
+  .solo-escritorio {
+    display: none;
+  }
+
+  .solo-movil {
+    display: inline;
+  }
+}
